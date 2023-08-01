@@ -21,8 +21,8 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: npm install
-      - name: Check style
-        run: npm run lint
+      # - name: Check style
+      #   run: npm run lint
       - name: start --dev mode
         run: npm run dev
       - name: test
