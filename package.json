@@ -1,7 +1,9 @@
 {
   "engines": {
-    "node": "16.20.1"
+    "node": "16.19.0",
+    "npm": "8.19.4"
   },
+
   "name": "blog",
   "version": "1.0.0",
   "description": "",
