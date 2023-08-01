@@ -30,8 +30,8 @@ jobs:
           echo "SECRET=${{ secrets.SECRET }}" >> .env
       # - name: Check style
       #   run: npm run lint
-      - name: start --dev mode
-        run: npm run dev
+      - name: start --production mode
+        run: npm run start
       - name: test
         run: npm run test
 
