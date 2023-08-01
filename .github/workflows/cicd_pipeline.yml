@@ -45,27 +45,6 @@ jobs:
         run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-      - name: Notify of successful deployment
-        if: success()
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          avatarUrl:
-          username:
-          severity: info
-          text: A new version of pokedex has been deployed
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          description: to https://fragrant-silence-4491.fly.dev/ by ${{ github.event.pusher.name }}
-      - name: Notify of build fail
-        if: failure()
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          avatarUrl:
-          username:
-          severity: error
-          text: Something went wrong, the build failed
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          description: commit
-           ${{ github.event.head_commit.url }} by ${{ github.event.pusher.name }} broke the build
 
 
 
@@ -75,7 +54,6 @@ jobs:
     name: Bump version and push tag
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
-    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v3
       - uses: anothrNick/github-tag-action@8c8163ef62cf9c4677c8e800f36270af27930f42
