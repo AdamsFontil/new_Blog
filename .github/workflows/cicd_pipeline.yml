@@ -1,4 +1,4 @@
-name: ci/cd for blog
+name: CI/CD for blog
 
 on:
   push:
@@ -16,17 +16,25 @@ jobs:
       (github.event_name == 'pull_request' && !contains(github.event.commits.*.message, '#skip'))
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
       - name: Install dependencies
         run: npm install
+      - name: Set environment variables from secrets
+        run: |
+          echo "PORT=${{ secrets.PORT }}" >> .env
+          echo "TEST_MONGODB_URI=${{ secrets.TEST_MONGODB_URI }}" >> .env
+          echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" >> .env
+          echo "SECRET=${{ secrets.SECRET }}" >> .env
       # - name: Check style
       #   run: npm run lint
       - name: start --dev mode
         run: npm run dev
       - name: test
         run: npm run test
+
   #     - name: e2e tests
   #       uses: cypress-io/github-action@v5
   #       with:
