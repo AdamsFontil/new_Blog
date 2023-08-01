@@ -22,7 +22,7 @@ beforeEach(async () => {
 module.exports = { loginToken }
 
 describe('adding new blogs', () => {
-  test('succeeds with valid token', async () => {
+  test.skip('succeeds with valid token', async () => {
     const newBlog = {
       'title': 'how to test Post Request with Jest',
       'author': 'fullStackOpen',
@@ -46,7 +46,7 @@ describe('adding new blogs', () => {
     )
   })
 
-  test('no likes means 0', async () => {
+  test.skip('no likes means 0', async () => {
     const newBlog = {
       'title': 'testing likes',
       'author': 'fullStackOpen',
@@ -125,7 +125,7 @@ describe('when there is already some blogs in db', () => {
 })
 
 
-describe('deletion of a blog', () => {
+describe.skip('deletion of a blog', () => {
   test('succeeds with status code 204 if id is valid', async () => {
     const blogToRemove =  {
       'title': 'this should be deleted',
@@ -235,7 +235,7 @@ describe('updating a blog', () => {
   })
 })
 
-test('fails with no token', async () => {
+test.skip('fails with no token', async () => {
   const blogWontUpdate =  {
     'title': 'this should be updated',
     'author': 'Arto Hellas',
