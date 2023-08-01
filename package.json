@@ -30,10 +30,6 @@
     "mongoose-unique-validator": "^3.1.0",
     "webpack": "^4.43.0"
   },
-"eslintConfig": {
-  "extends": "react-app"
-},
-
   "devDependencies": {
     "cross-env": "^7.0.3",
     "eslint": "^8.36.0",
@@ -46,5 +42,9 @@
     "testEnvironment": "node",
     "globalTeardown": "./tests/teardown.js"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000",
+"eslintConfig": {
+  "extends": "eslint:recommended"
+}
+
 }
